@@ -12,7 +12,7 @@ Public access to backend
 
         """,
     "depends": ["base", "web"],
-    "data": [],
+    "data": ["data/res_users_data.xml"],
     "demo": [],
     "qweb": [],
     "installable": True,
