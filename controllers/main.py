@@ -15,7 +15,16 @@ class PublicController(http.Controller):
             tmp = (
                 request.env["res.users"]
                 .sudo()
-                .create({"name": "", "login": tmp_login, "password": tmp_login})
+                .create(
+                    {
+                        "name": "",
+                        "login": tmp_login,
+                        "password": tmp_login,
+                        "lang": False,
+                        "company_id": request.env.ref("base.main_company").id,
+                        "company_ids": [(4, request.env.ref("base.main_company").id)],
+                    }
+                )
             )
             request.session.uid = tmp.id
             request.env["res.users"]._invalidate_session_cache()
